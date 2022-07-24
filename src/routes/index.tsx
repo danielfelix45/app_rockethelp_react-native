@@ -7,20 +7,20 @@ import AppRoutes from './app.routes';
 import { Loading } from "../components/Loading";
 
 export default function Routes() {
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setISLoading] = useState(true);
   const [user, setUser] = useState<FirebaseAuthTypes.User>();
 
   useEffect(() => {
     const subscriber = auth()
       .onAuthStateChanged(res => {
         setUser(res);
-        setLoading(false);
+        setISLoading(false);
       })
 
     return subscriber;
   }, []);
 
-  if (loading) {
+  if (isLoading) {
     return <Loading />
   }
 
